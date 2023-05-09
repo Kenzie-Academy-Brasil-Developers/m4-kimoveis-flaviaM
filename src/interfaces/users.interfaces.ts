@@ -7,14 +7,14 @@ import {
 import { DeepPartial, Repository } from "typeorm";
 import { User } from "../entities";
 
-type TCreate = z.infer<typeof createSchemaData>;
+type TCreateUser = z.infer<typeof createSchemaData>;
 
-type TReturn = z.infer<typeof returnSchemaData>;
+type TReturnUser = z.infer<typeof returnSchemaData>;
 
-type TAll = z.infer<typeof allSchemaData>;
+type TAllUser = z.infer<typeof allSchemaData>;
 
-type TUpdate = DeepPartial<TCreate>;
+type TUpdateUser = DeepPartial<TCreateUser>;
 
-type TRepository = Repository<User>;
+type TRepositoryUser = Repository<User>;
 
-export { TCreate, TReturn, TAll, TUpdate, TRepository };
+export { TCreateUser, TReturnUser, TAllUser, TUpdateUser, TRepositoryUser };

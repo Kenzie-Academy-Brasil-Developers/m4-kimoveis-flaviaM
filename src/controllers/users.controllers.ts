@@ -4,13 +4,13 @@ import createUserService from "../services/users/createUser.service";
 import getAllUsersService from "../services/users/getAllUsers.service";
 import updateUserService from "../services/users/updateUser.service";
 import softDeleteUserService from "../services/users/softDeleteUser.service";
-import { TCreate, TUpdate } from "../interfaces/users.interfaces";
+import { TCreateUser, TUpdateUser } from "../interfaces/users.interfaces";
 
 const createUserController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const userData: TCreate = req.body;
+  const userData: TCreateUser = req.body;
 
   const newUser = await createUserService(userData);
 
@@ -29,7 +29,7 @@ const updateUserController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const userData: TUpdate = req.body;
+  const userData: TUpdateUser = req.body;
   const idParam = parseInt(req.params.id);
   const updatedUser = await updateUserService(userData, idParam);
   return res.json(updatedUser);

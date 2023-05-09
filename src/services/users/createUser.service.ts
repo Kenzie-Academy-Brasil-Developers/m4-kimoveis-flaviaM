@@ -2,14 +2,16 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities";
 import {
-  TCreate,
-  TRepository,
-  TReturn,
+  TCreateUser,
+  TRepositoryUser,
+  TReturnUser,
 } from "../../interfaces/users.interfaces";
 import { returnSchemaData } from "../../schemas/users.schemas";
 
-const createUserService = async (userData: TCreate): Promise<TReturn> => {
-  const userRepository: TRepository = AppDataSource.getRepository(User);
+const createUserService = async (
+  userData: TCreateUser
+): Promise<TReturnUser> => {
+  const userRepository: TRepositoryUser = AppDataSource.getRepository(User);
 
   const user = userRepository.create(userData);
 

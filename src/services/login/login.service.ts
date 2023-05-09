@@ -1,13 +1,13 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities";
-import { tLoginRequest } from "../../interfaces/login.interfaces";
+import { TLoginData } from "../../interfaces/login.interfaces";
 import { AppError } from "../../error";
 import * as bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 
-const createLoginService = async (payload: tLoginRequest): Promise<string> => {
+const createLoginService = async (payload: TLoginData): Promise<string> => {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
   const user: User | null = await userRepository.findOneBy({
     email: payload.email,

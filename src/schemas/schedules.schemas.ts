@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { returnSchemaRealEstateData } from "./estate.schemas";
+import { returnSchemaRealEstateData } from "./realEstate.schemas";
 import { returnSchemaData } from "./users.schemas";
 
 const createSchemaScheduleData = z.object({

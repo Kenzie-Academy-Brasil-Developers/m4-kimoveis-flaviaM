@@ -2,13 +2,13 @@ import { Repository } from "typeorm";
 
 import { User } from "../../entities";
 import { AppDataSource } from "../../data-source";
-import { TReturn, TUpdate } from "../../interfaces/users.interfaces";
+import { TReturnUser, TUpdateUser } from "../../interfaces/users.interfaces";
 import { returnSchemaData } from "../../schemas/users.schemas";
 
 const updateUserService = async (
-  userData: TUpdate,
+  userData: TUpdateUser,
   idParam: number
-): Promise<TReturn> => {
+): Promise<TReturnUser> => {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
   const oldUser = await userRepository.findOne({
     where: {

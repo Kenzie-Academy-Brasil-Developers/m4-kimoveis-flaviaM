@@ -9,8 +9,8 @@ const createSchemaRealEstateData = z.object({
   value: z.number().or(z.string()),
   size: z.number().int().positive(),
   sold: z.boolean().optional().default(false),
-  categoryId: z.number().optional().nullish(),
   address: createSchemaAddressData,
+  categoryId: z.number().optional().nullish(),
 });
 
 const returnSchemaRealEstateData = createSchemaRealEstateData

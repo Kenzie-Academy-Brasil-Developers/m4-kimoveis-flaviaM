@@ -6,10 +6,11 @@ const ensurePermissionIsAdminUserMiddleware = (
   res: Response,
   next: NextFunction
 ): void => {
-  const idParam: number = parseInt(req.body.id);
+  const idUser: number = parseInt(req.body.id);
   const { admin, id } = req.user;
+
   if (!admin) {
-    if (idParam !== id) {
+    if (idUser !== id) {
       throw new AppError("Insufficient permission", 403);
     }
     const { admin, ...payload } = req.body;

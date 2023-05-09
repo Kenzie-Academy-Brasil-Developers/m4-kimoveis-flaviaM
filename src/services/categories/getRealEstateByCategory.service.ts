@@ -1,18 +1,17 @@
 import { Repository } from "typeorm";
-import { Category, RealEstate } from "../../entities";
+import { Category } from "../../entities";
 import { AppDataSource } from "../../data-source";
-import { createCategoryResponseSchema } from "../../schemas/categories.schemas";
 import { AppError } from "../../error";
 
 const getRealEstateByCategoryService = async (
-  idCategory: number
+  categoryId: number
 ): Promise<object> => {
   const categoryRepository: Repository<Category> =
     AppDataSource.getRepository(Category);
 
   const categoryRepoResult: Category | null = await categoryRepository.findOne({
     where: {
-      id: idCategory,
+      id: categoryId,
     },
     relations: {
       realEstate: true,

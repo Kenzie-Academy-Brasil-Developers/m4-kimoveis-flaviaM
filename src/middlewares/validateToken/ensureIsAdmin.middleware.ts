@@ -7,6 +7,7 @@ const ensureIsAdminMiddleware = (
   next: NextFunction
 ): void => {
   const user = req.user.admin;
+
   if (user === false) {
     throw new AppError("Insufficient permission", 403);
   }
