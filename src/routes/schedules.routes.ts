@@ -1,7 +1,27 @@
 import { Router } from "express";
+import ensureDataIsValidMiddleware from "../middlewares/users/ensureDataIsValid.middleware";
+import ensureTokenIsValidMiddleware from "../middlewares/validateToken/ensureTokenIsValid.middleware";
+import {
+  createSchedulesController,
+  getSchedulesController,
+} from "../controllers/schedules.controllers";
+import { createSchemaScheduleData } from "../schemas/schedules.schemas";
+import ensureIsAdminMiddleware from "../middlewares/validateToken/ensureIsAdmin.middleware";
 
 const schedulesRoutes: Router = Router();
 
-schedulesRoutes.post("");
+schedulesRoutes.post(
+  "",
+  ensureTokenIsValidMiddleware,
+  ensureDataIsValidMiddleware(createSchemaScheduleData),
+  createSchedulesController
+);
+
+schedulesRoutes.get(
+  "/realEstate/:id",
+  ensureTokenIsValidMiddleware,
+  ensureIsAdminMiddleware,
+  getSchedulesController
+);
 
 export default schedulesRoutes;
