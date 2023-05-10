@@ -4,10 +4,7 @@ import {
   TReturnRealEstate,
 } from "../../interfaces/realEstate.interfaces";
 import { AppDataSource } from "../../data-source";
-import {
-  createSchemaRealEstateData,
-  returnSchemaRealEstateData,
-} from "../../schemas/realEstate.schemas";
+import { returnSchemaRealEstateData } from "../../schemas/realEstate.schemas";
 import { AppError } from "../../error";
 import { Address, Category, RealEstate } from "../../entities";
 
