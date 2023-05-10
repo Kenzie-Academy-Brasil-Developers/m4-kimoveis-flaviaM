@@ -25,7 +25,11 @@ const createLoginService = async (payload: TLoginData): Promise<string> => {
     {
       admin: user.admin,
     },
-    process.env.SECRET_KEY!
+    process.env.SECRET_KEY!,
+    {
+      subject: user.id.toString(),
+      expiresIn: process.env.EXPIRES_IN || "24h",
+    }
   );
   return token;
 };

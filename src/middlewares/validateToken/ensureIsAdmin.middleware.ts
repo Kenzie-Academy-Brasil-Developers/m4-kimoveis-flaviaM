@@ -6,7 +6,7 @@ const ensureIsAdminMiddleware = (
   res: Response,
   next: NextFunction
 ): void => {
-  const user = req.user.admin;
+  const user = res.locals.user.admin;
 
   if (user === false) {
     throw new AppError("Insufficient permission", 403);

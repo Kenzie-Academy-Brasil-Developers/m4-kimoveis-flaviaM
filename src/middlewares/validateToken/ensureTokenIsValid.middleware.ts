@@ -18,8 +18,8 @@ const ensureTokenIsValidMiddleware = (
     if (error) {
       throw new AppError(error.message, 401);
     }
-    req.user = {
-      id: parseInt(decoded.id),
+    res.locals.user = {
+      id: parseInt(decoded.sub),
       admin: decoded.admin,
     };
     return next();

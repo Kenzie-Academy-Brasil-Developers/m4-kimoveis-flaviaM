@@ -7,7 +7,7 @@ const ensurePermissionIsAdminUserMiddleware = (
   next: NextFunction
 ): void => {
   const idUser: number = parseInt(req.body.id);
-  const { admin, id } = req.user;
+  const { admin, id } = res.locals.user;
 
   if (!admin) {
     if (idUser !== id) {
