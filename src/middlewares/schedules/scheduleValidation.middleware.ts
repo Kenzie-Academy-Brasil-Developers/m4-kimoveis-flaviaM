@@ -15,14 +15,14 @@ export const validScheduleMiddlewares = async (
   const schedulesRepo = AppDataSource.getRepository(Schedule);
 
   const schedulesBuilderHour: Schedule | null = await schedulesRepo
-    .createQueryBuilder("schedules_users_properties")
-    .where("schedules_users_properties.date = :date", {
+    .createQueryBuilder("schedules_appointment")
+    .where("schedules_appointment.date = :date", {
       date: schedulesInfo.date,
     })
-    .andWhere("schedules_users_properties.realEstate = :estate", {
+    .andWhere("schedules_appointment.realEstate = :estate", {
       estate: schedulesInfo.realEstateId,
     })
-    .andWhere("schedules_users_properties.hour = :hour", {
+    .andWhere("schedules_appointment.hour = :hour", {
       hour: schedulesInfo.hour,
     })
     .getOne();
@@ -35,14 +35,14 @@ export const validScheduleMiddlewares = async (
   }
 
   const schedulesBuilderUser: Schedule | null = await schedulesRepo
-    .createQueryBuilder("schedules_users_properties")
-    .where("schedules_users_properties.date = :date", {
+    .createQueryBuilder("schedules_appointment")
+    .where("schedules_appointment.date = :date", {
       date: schedulesInfo.date,
     })
-    .andWhere("schedules_users_properties.hour = :hour", {
+    .andWhere("schedules_appointment.hour = :hour", {
       hour: schedulesInfo.hour,
     })
-    .andWhere("schedules_users_properties.userId = :id", { id: userId })
+    .andWhere("schedules_appointment.userId = :id", { id: userId })
     .getOne();
 
   if (schedulesBuilderUser) {
@@ -53,11 +53,11 @@ export const validScheduleMiddlewares = async (
   }
 
   const schedulesBuilderUserRealEstate: Schedule | null = await schedulesRepo
-    .createQueryBuilder("schedules_users_properties")
-    .where("schedules_users_properties.userId = :id", {
+    .createQueryBuilder("schedules_appointment")
+    .where("schedules_appointment.userId = :id", {
       id: userId,
     })
-    .andWhere("schedules_users_properties.realEstate = :estate", {
+    .andWhere("schedules_appointment.realEstate = :estate", {
       estate: schedulesInfo.realEstateId,
     })
     .getOne();
