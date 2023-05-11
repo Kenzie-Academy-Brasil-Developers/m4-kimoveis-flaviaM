@@ -5,7 +5,7 @@ import { AppError } from "../../error";
 
 const getRealEstateByCategoryService = async (
   categoryId: number
-): Promise<object> => {
+): Promise<Category> => {
   const categoryRepository: Repository<Category> =
     AppDataSource.getRepository(Category);
 
@@ -21,7 +21,7 @@ const getRealEstateByCategoryService = async (
     throw new AppError("Category not found", 404);
   }
 
-  return categoryRepoResult;
+  return categoryRepoResult!;
 };
 
 export default getRealEstateByCategoryService;
